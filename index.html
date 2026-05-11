@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>待办清单</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Today</p>
+          <h1>待办清单</h1>
+        </div>
+        <div class="date-card" aria-label="今天日期">
+          <span id="weekday">--</span>
+          <strong id="dateText">--</strong>
+        </div>
+      </section>
+
+      <section class="task-panel" aria-label="待办应用">
+        <form class="task-form" id="taskForm">
+          <label class="sr-only" for="taskInput">新增待办</label>
+          <input id="taskInput" type="text" placeholder="写下下一件要做的事" autocomplete="off" maxlength="80">
+          <button type="submit">添加</button>
+        </form>
+
+        <div class="toolbar" aria-label="任务筛选">
+          <button class="filter-button active" type="button" data-filter="all">全部</button>
+          <button class="filter-button" type="button" data-filter="active">进行中</button>
+          <button class="filter-button" type="button" data-filter="completed">已完成</button>
+        </div>
+
+        <ul class="task-list" id="taskList" aria-live="polite"></ul>
+
+        <div class="empty-state" id="emptyState">
+          <strong>今天还很清爽</strong>
+          <span>添加一个小任务，让页面开始工作。</span>
+        </div>
+
+        <footer class="summary">
+          <span id="taskCount">0 项待办</span>
+          <button class="text-button" type="button" id="clearCompleted">清除已完成</button>
+        </footer>
+      </section>
+    </main>
+
+    <template id="taskTemplate">
+      <li class="task-item">
+        <label class="task-check">
+          <input type="checkbox">
+          <span></span>
+        </label>
+        <span class="task-title"></span>
+        <button class="delete-button" type="button" aria-label="删除任务">删除</button>
+      </li>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>

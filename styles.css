@@ -1,0 +1,308 @@
+:root {
+  --bg: #f6f4ef;
+  --panel: #ffffff;
+  --ink: #1f2933;
+  --muted: #667085;
+  --line: #e6e1d9;
+  --green: #2f8f67;
+  --green-dark: #20744f;
+  --coral: #d96c4a;
+  --shadow: 0 22px 60px rgba(31, 41, 51, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background:
+    linear-gradient(135deg, rgba(47, 143, 103, 0.16), transparent 34%),
+    linear-gradient(225deg, rgba(217, 108, 74, 0.16), transparent 38%),
+    var(--bg);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  width: min(920px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.hero {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--green-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.3rem, 8vw, 5.2rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.date-card {
+  min-width: 148px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  text-align: right;
+  box-shadow: 0 12px 30px rgba(31, 41, 51, 0.08);
+}
+
+.date-card span,
+.date-card strong {
+  display: block;
+}
+
+.date-card span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.date-card strong {
+  margin-top: 4px;
+  font-size: 1.1rem;
+}
+
+.task-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.task-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  padding: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.task-form input {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 15px;
+  color: var(--ink);
+  background: #fbfaf7;
+  outline: none;
+}
+
+.task-form input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(47, 143, 103, 0.14);
+}
+
+.task-form button,
+.filter-button {
+  border: 0;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.task-form button {
+  min-width: 88px;
+  padding: 0 20px;
+  color: #fff;
+  background: var(--green);
+}
+
+.task-form button:hover {
+  background: var(--green-dark);
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+  background: #fbfaf7;
+}
+
+.filter-button {
+  min-height: 36px;
+  padding: 0 14px;
+  color: var(--muted);
+  background: transparent;
+}
+
+.filter-button.active {
+  color: #fff;
+  background: var(--ink);
+}
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.task-item {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.task-check {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+}
+
+.task-check input {
+  position: absolute;
+  opacity: 0;
+}
+
+.task-check span {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #bac4bd;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.task-check input:checked + span {
+  border-color: var(--green);
+  background:
+    radial-gradient(circle at center, #fff 0 28%, transparent 30%),
+    var(--green);
+}
+
+.task-title {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 1rem;
+}
+
+.task-item.completed .task-title {
+  color: #8a938c;
+  text-decoration: line-through;
+}
+
+.delete-button,
+.text-button {
+  border: 0;
+  color: var(--coral);
+  background: transparent;
+  font-weight: 700;
+}
+
+.delete-button {
+  padding: 8px 0 8px 12px;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 56px;
+  padding: 0 20px;
+  color: var(--muted);
+  background: #fbfaf7;
+}
+
+.empty-state {
+  display: none;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.empty-state strong,
+.empty-state span {
+  display: block;
+}
+
+.empty-state strong {
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.empty-state.visible {
+  display: block;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    width: min(100% - 24px, 920px);
+    padding: 28px 0;
+  }
+
+  .hero {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .date-card {
+    text-align: left;
+  }
+
+  .task-form {
+    grid-template-columns: 1fr;
+  }
+
+  .task-form button {
+    min-height: 46px;
+  }
+
+  .toolbar {
+    overflow-x: auto;
+  }
+
+  .task-item {
+    grid-template-columns: 32px 1fr;
+  }
+
+  .delete-button {
+    grid-column: 2;
+    justify-self: start;
+    padding: 0;
+  }
+}
