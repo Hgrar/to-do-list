@@ -88,41 +88,29 @@ h1 {
   font-size: 1.1rem;
 }
 
-.countdown-card {
-  display: flex;
+.exam-pill {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 22px;
-  padding: 22px 24px;
-  border: 1px solid rgba(217, 108, 74, 0.28);
-  border-radius: 8px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 246, 238, 0.9));
-  box-shadow: 0 14px 36px rgba(31, 41, 51, 0.1);
-}
-
-.countdown-label {
-  margin: 0 0 6px;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: 12px;
+  padding: 6px 10px;
+  border: 1px solid rgba(217, 108, 74, 0.24);
+  border-radius: 999px;
   color: var(--coral);
-  font-size: 0.84rem;
-  font-weight: 800;
-}
-
-.countdown-days {
-  display: grid;
-  min-width: 132px;
-  text-align: right;
-}
-
-.countdown-days strong {
-  font-size: clamp(2.4rem, 7vw, 4.4rem);
-  line-height: 0.9;
-}
-
-.countdown-days span {
-  margin-top: 6px;
-  color: var(--muted);
+  background: rgba(255, 246, 238, 0.95);
+  font-size: 0.78rem;
   font-weight: 700;
+  white-space: nowrap;
+}
+
+.exam-pill span,
+.exam-pill strong {
+  display: inline;
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  line-height: 1;
 }
 
 .task-panel {
@@ -321,14 +309,8 @@ h1 {
     text-align: left;
   }
 
-  .countdown-card {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .countdown-days {
-    min-width: 0;
-    text-align: left;
+  .exam-pill {
+    justify-content: flex-start;
   }
 
   .task-form {
