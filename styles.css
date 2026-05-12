@@ -108,12 +108,6 @@ h1 {
   font-weight: 800;
 }
 
-.countdown-card h2 {
-  margin: 0;
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
-  letter-spacing: 0;
-}
-
 .countdown-days {
   display: grid;
   min-width: 132px;
