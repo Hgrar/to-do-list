@@ -10,6 +10,11 @@ const clearCompleted = document.querySelector("#clearCompleted");
 const filterButtons = document.querySelectorAll(".filter-button");
 const weekday = document.querySelector("#weekday");
 const dateText = document.querySelector("#dateText");
+const examDays = document.querySelector("#examDays");
+const examStatus = document.querySelector("#examStatus");
+
+const EXAM_DATE = new Date(2026, 11, 26);
+const DAY_IN_MS = 24 * 60 * 60 * 1000;
 
 let tasks = loadTasks();
 let currentFilter = "all";
@@ -114,6 +119,27 @@ function renderDate() {
   }).format(now);
 }
 
+function renderExamCountdown() {
+  const today = new Date();
+  const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const daysLeft = Math.ceil((EXAM_DATE - startOfToday) / DAY_IN_MS);
+
+  if (daysLeft > 0) {
+    examDays.textContent = daysLeft;
+    examStatus.textContent = "天后开考";
+    return;
+  }
+
+  if (daysLeft === 0) {
+    examDays.textContent = "今天";
+    examStatus.textContent = "保持节奏，稳住";
+    return;
+  }
+
+  examDays.textContent = Math.abs(daysLeft);
+  examStatus.textContent = "天前已开考";
+}
+
 taskForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const title = taskInput.value.trim();
@@ -139,4 +165,5 @@ clearCompleted.addEventListener("click", () => {
 });
 
 renderDate();
+renderExamCountdown();
 renderTasks();
