@@ -64,27 +64,28 @@ h1 {
 }
 
 .date-card {
-  min-width: 148px;
+  min-width: 190px;
   padding: 16px 18px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.72);
-  text-align: right;
   box-shadow: 0 12px 30px rgba(31, 41, 51, 0.08);
 }
 
-.date-card span,
-.date-card strong {
-  display: block;
+.date-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 8px;
+  white-space: nowrap;
 }
 
-.date-card span {
+.date-row span {
   color: var(--muted);
   font-size: 0.92rem;
 }
 
-.date-card strong {
-  margin-top: 4px;
+.date-row strong {
   font-size: 1.1rem;
 }
 
@@ -102,15 +103,6 @@ h1 {
   font-size: 0.78rem;
   font-weight: 700;
   white-space: nowrap;
-}
-
-.exam-pill span,
-.exam-pill strong {
-  display: inline;
-  margin: 0;
-  color: inherit;
-  font-size: inherit;
-  line-height: 1;
 }
 
 .task-panel {
@@ -306,7 +298,11 @@ h1 {
   }
 
   .date-card {
-    text-align: left;
+    min-width: 0;
+  }
+
+  .date-row {
+    justify-content: flex-start;
   }
 
   .exam-pill {

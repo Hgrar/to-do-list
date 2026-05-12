@@ -10,8 +10,7 @@ const clearCompleted = document.querySelector("#clearCompleted");
 const filterButtons = document.querySelectorAll(".filter-button");
 const weekday = document.querySelector("#weekday");
 const dateText = document.querySelector("#dateText");
-const examDays = document.querySelector("#examDays");
-const examStatus = document.querySelector("#examStatus");
+const examCountdownText = document.querySelector("#examCountdownText");
 
 const EXAM_DATE = new Date(2026, 11, 26);
 const DAY_IN_MS = 24 * 60 * 60 * 1000;
@@ -125,19 +124,16 @@ function renderExamCountdown() {
   const daysLeft = Math.ceil((EXAM_DATE - startOfToday) / DAY_IN_MS);
 
   if (daysLeft > 0) {
-    examDays.textContent = daysLeft;
-    examStatus.textContent = "天后开考";
+    examCountdownText.textContent = `距离27考研还剩${daysLeft}天`;
     return;
   }
 
   if (daysLeft === 0) {
-    examDays.textContent = "今天";
-    examStatus.textContent = "保持节奏，稳住";
+    examCountdownText.textContent = "27考研就在今天，保持节奏";
     return;
   }
 
-  examDays.textContent = Math.abs(daysLeft);
-  examStatus.textContent = "天前已开考";
+  examCountdownText.textContent = `27考研已过去${Math.abs(daysLeft)}天`;
 }
 
 taskForm.addEventListener("submit", (event) => {
